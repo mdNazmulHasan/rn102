@@ -12,6 +12,7 @@ import {
 import Card from "../components/Card.js";
 import color from "../constants/color";
 import Input from "../components/Input";
+import NumberContainer from "../components/NumberContainer";
 const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row"
@@ -32,7 +33,10 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   button: { width: 100 },
-  inputs: { width: 50, textAlign: "center" }
+  inputs: { width: 50, textAlign: "center" },
+  summaryContainer: {
+    marginTop: 20
+  }
 });
 
 const StartGameScreen = () => {
@@ -62,7 +66,12 @@ const StartGameScreen = () => {
   };
   let confirmedOutput;
   if (didConfirm) {
-    confirmedOutput = <Text>Chosen Number: {confirmedValue}</Text>;
+    confirmedOutput = (
+      <Card style={styles.summaryContainer}>
+        <Text>You selected</Text>
+        <NumberContainer>{confirmedValue}</NumberContainer>
+      </Card>
+    );
   }
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
