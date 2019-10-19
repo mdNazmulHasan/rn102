@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const StartGameScreen = () => {
+const StartGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState("");
   const [didConfirm, setConfirmed] = useState(false);
   const [confirmedValue, setConfirmedValue] = useState();
@@ -72,7 +72,10 @@ const StartGameScreen = () => {
       <Card style={styles.summaryContainer}>
         <Text>You selected</Text>
         <NumberContainer>{confirmedValue}</NumberContainer>
-        <Button title="START GAME" />
+        <Button
+          title="START GAME"
+          onPress={() => props.onStartGame(confirmedValue)}
+        />
       </Card>
     );
   }
